@@ -1,30 +1,29 @@
 import 'dart:io';
 
-void main() {
+void main(){
   String input = stdin.readLineSync()!;
-  List<String> parts = input.split(' ');
-  String S = parts[0];
-  int K = int.parse(parts[1]);
+  var data = input.split(' ');
 
-  // Convert the string S to a list of characters for easy manipulation
-  List<String> SList = S.split('');
+  String S = data[0];
+  int k = int.parse(data[1]);
 
-  int i = 0;
+  var charArr = S.split('');
 
-  // Change the digits while there are remaining changes and we haven't reached the end of the string
-  while (K > 0 && i < SList.length) {
-    if (i == 0 && SList[i] != '1') {
-      SList[i] = '1';
-      K--;
-    } else if (i != 0 && SList[i] != '0') {
-      SList[i] = '0';
-      K--;
+
+  if(charArr[0]!= '1'){
+    charArr[0] = '1';
+    k--;
+  }
+  for(int i=1; i<charArr.length && k>0 ; i++){
+    if(charArr[i]!= '0'){
+      charArr[i] = '0';
+      k--;
     }
-    i++;
   }
 
-  // Join the modified list back into a string
-  String minimizedS = SList.join('');
+  print('Min = ' +charArr.join());
 
-  print("Min = $minimizedS");
 }
+
+
+
